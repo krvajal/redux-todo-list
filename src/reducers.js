@@ -17,7 +17,11 @@ const todo = (state, action) => {
         ...state,
         completed: !state.completed
       };
-
+    case "TOGGLE_ALL":
+      return {
+        ...state,
+        completed: !state.completed
+      };
     case "EDIT_TODO":
       if (action.id !== state.id) {
         return state;
@@ -44,6 +48,8 @@ export const todos = (state = [], action) => {
       return state.map(t => todo(t, action));
     case "CLEAR_COMPLETED":
       return state.filter(t => !t.completed);
+    case "TOGGLE_ALL":
+      return state.map(t => todo(t, action));
     default:
       return state;
   }
