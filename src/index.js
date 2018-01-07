@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-
 import { createStore } from "redux";
 import Provider from "./components/Provider";
 import TodoApp from "./App";
 import todoApp from "./reducers";
+import { loadState } from "./localStorage";
 
 const store = createStore(
   todoApp,
