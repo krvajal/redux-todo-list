@@ -1,7 +1,7 @@
 import React from "react";
 import FilterLink from "./FilterLink";
 import { connect } from "react-redux";
-
+import { withRouter } from "react-router-dom";
 const mapStateToProps = state => {
   return {
     activeCount: state.todos.filter(t => !t.completed).length,
@@ -20,7 +20,8 @@ const Footer = ({
   onFilterClick,
   activeCount,
   onClearCompletedClick,
-  showClearButton
+  showClearButton,
+  location
 }) => (
   <footer className="footer">
     <span className="todo-count">
@@ -29,13 +30,13 @@ const Footer = ({
     </span>
     <ul className="filters">
       <li>
-        <FilterLink filter="SHOW_ALL">All</FilterLink>
+        <FilterLink filter="all">All</FilterLink>
       </li>
       <li>
-        <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>
+        <FilterLink filter="active">Active</FilterLink>
       </li>
       <li>
-        <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
+        <FilterLink filter="completed">Completed</FilterLink>
       </li>
     </ul>
     {showClearButton && (

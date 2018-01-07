@@ -3,17 +3,17 @@ import PropTypes from "prop-types";
 import TodoList from "./TodoList";
 import { getVisibleTodos } from "../lib/utils";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 import {
   toggleTodoAction,
   deleteTodoAction,
   toggleAllAction
 } from "../actionCreators";
 
-const mapStateToProps = ({ todos, visibilityFilter }) => {
-  return {
-    todos: getVisibleTodos(todos, visibilityFilter)
-  };
-};
+const mapStateToProps = ({ todos }, ownProps) => ({
+  todos: getVisibleTodos(todos, ownProps.match.params.filter || "all")
+});
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -29,5 +29,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const VisibleTodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList);
+const VisibleTodoList = withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(TodoList)
+);
 export default VisibleTodoList;

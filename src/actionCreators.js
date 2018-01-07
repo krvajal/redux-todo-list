@@ -8,13 +8,6 @@ export const addTodoAction = text => {
   };
 };
 
-export const setVisibilityAction = filter => {
-  return {
-    type: "SET_VISIBILITY_FILTER",
-    filter
-  };
-};
-
 export const toggleTodoAction = id => {
   return {
     type: "TOGGLE_TODO",
