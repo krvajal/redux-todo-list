@@ -6,8 +6,8 @@ const Todo = ({ onClick, completed, text, onRemove }) => (
       <input
         className="toggle"
         type="checkbox"
-        onClick={onClick}
-        value={completed ? "on" : "off"}
+        onChange={onClick}
+        checked={completed}
       />
       <label>{text}</label>
       <button className="destroy" onClick={onRemove} />
