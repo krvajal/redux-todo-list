@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import TodoList from "./TodoList";
-import { getVisibleTodos } from "../lib/utils";
+import { getVisibleTodos } from "../reducers";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import {
   toggleTodoAction,
   deleteTodoAction,
-  toggleAllAction
+  toggleAllAction,
+  editTodoAction
 } from "../actionCreators";
 
-const mapStateToProps = ({ todos }, ownProps) => ({
-  todos: getVisibleTodos(todos, ownProps.match.params.filter || "all")
+const mapStateToProps = (state, ownProps) => ({
+  todos: getVisibleTodos(state, ownProps.match.params.filter || "all")
 });
 
 const mapDispatchToProps = dispatch => {
@@ -22,6 +23,9 @@ const mapDispatchToProps = dispatch => {
     },
     onTodoRemove: id => {
       dispatch(deleteTodoAction(id));
+    },
+    onTodoEdit: (id, text) => {
+      dispatch(editTodoAction(id, text));
     },
     onToggleAllClick: () => {
       dispatch(toggleAllAction());

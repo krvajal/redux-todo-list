@@ -1,7 +1,13 @@
 import React from "react";
 import Todo from "./Todo";
 
-const TodoList = ({ todos, onTodoClick, onTodoRemove, onToggleAllClick }) => (
+const TodoList = ({
+  todos,
+  onTodoClick,
+  onTodoRemove,
+  onToggleAllClick,
+  onTodoEdit
+}) => (
   <section className="main">
     <input className="toggle-all" type="checkbox" onChange={onToggleAllClick} />
     <ul className="todo-list">
@@ -12,6 +18,7 @@ const TodoList = ({ todos, onTodoClick, onTodoRemove, onToggleAllClick }) => (
             {...t}
             onClick={() => onTodoClick(t.id)}
             onRemove={() => onTodoRemove(t.id)}
+            onEdit={text => onTodoEdit(t.id, text)}
           />
         );
       })}

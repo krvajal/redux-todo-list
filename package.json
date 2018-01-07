@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://krvajal.github.io/redux-todo-list",
   "dependencies": {
+    "classnames": "^2.2.5",
     "deep-freeze": "^0.0.1",
     "expect": "^22.0.3",
     "gh-pages": "^1.1.0",

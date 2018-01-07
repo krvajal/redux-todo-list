@@ -27,3 +27,11 @@ export const toggleAllAction = () => {
     type: "TOGGLE_ALL"
   };
 };
+
+export const editTodoAction = (id, text) => {
+  return {
+    type: "EDIT_TODO",
+    id,
+    text
+  };
+};

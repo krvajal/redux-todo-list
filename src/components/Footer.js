@@ -2,10 +2,11 @@ import React from "react";
 import FilterLink from "./FilterLink";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { getActiveTodoCount, getCompletedTodoCount } from "../reducers";
 const mapStateToProps = state => {
   return {
-    activeCount: state.todos.filter(t => !t.completed).length,
-    showClearButton: state.todos.filter(t => t.completed).length > 0
+    activeCount: getActiveTodoCount(state),
+    showClearButton: getCompletedTodoCount(state) > 0
   };
 };
 const mapDispatchToProps = dispatch => {
