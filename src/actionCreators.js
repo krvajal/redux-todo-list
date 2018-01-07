@@ -13,3 +13,17 @@ export const setVisibilityAction = filter => {
     filter
   };
 };
+
+export const toggleTodoAction = id => {
+  return {
+    type: "TOGGLE_TODO",
+    id
+  };
+};
+
+export const deleteTodoAction = id => {
+  return {
+    type: "REMOVE_TODO",
+    id
+  };
+};
