@@ -1,9 +1,17 @@
 import React from "react";
 import FilterLink from "./FilterLink";
-const Footer = ({ visibilityFilter, onFilterClick }) => (
+import { connect } from "react-redux";
+
+const mapStateToProps = state => {
+  return {
+    activeCount: state.todos.filter(t => !t.completed).length
+  };
+};
+const Footer = ({ visibilityFilter, onFilterClick, activeCount }) => (
   <footer className="footer">
     <span className="todo-count">
-      <strong> 1</strong> item left
+      <strong>{activeCount}</strong>{" "}
+      {`item${activeCount !== 1 ? "s" : ""} left`}
     </span>
     <ul className="filters">
       <li>
@@ -20,4 +28,4 @@ const Footer = ({ visibilityFilter, onFilterClick }) => (
   </footer>
 );
 
-export default Footer;
+export default connect(mapStateToProps, dispatch => ({}))(Footer);
