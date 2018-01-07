@@ -7,7 +7,19 @@ const mapStateToProps = state => {
     activeCount: state.todos.filter(t => !t.completed).length
   };
 };
-const Footer = ({ visibilityFilter, onFilterClick, activeCount }) => (
+const mapDispatchToProps = dispatch => {
+  return {
+    onClearCompletedClick: () => {
+      dispatch({ type: "CLEAR_COMPLETED" });
+    }
+  };
+};
+const Footer = ({
+  visibilityFilter,
+  onFilterClick,
+  activeCount,
+  onClearCompletedClick
+}) => (
   <footer className="footer">
     <span className="todo-count">
       <strong>{activeCount}</strong>{" "}
@@ -24,8 +36,10 @@ const Footer = ({ visibilityFilter, onFilterClick, activeCount }) => (
         <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
       </li>
     </ul>
-    <button className="clear-completed">Clear completed</button>
+    <button className="clear-completed" onClick={onClearCompletedClick}>
+      Clear completed
+    </button>
   </footer>
 );
 
-export default connect(mapStateToProps, dispatch => ({}))(Footer);
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);
