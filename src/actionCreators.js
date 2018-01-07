@@ -27,3 +27,9 @@ export const deleteTodoAction = id => {
     id
   };
 };
+
+export const toggleAllAction = () => {
+  return {
+    type: "TOGGLE_ALL"
+  };
+};

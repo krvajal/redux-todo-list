@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 import TodoList from "./TodoList";
 import { getVisibleTodos } from "../lib/utils";
 import { connect } from "react-redux";
-import { toggleTodoAction, deleteTodoAction } from "../actionCreators";
+import {
+  toggleTodoAction,
+  deleteTodoAction,
+  toggleAllAction
+} from "../actionCreators";
 
 const mapStateToProps = ({ todos, visibilityFilter }) => {
   return {
@@ -18,6 +22,9 @@ const mapDispatchToProps = dispatch => {
     },
     onTodoRemove: id => {
       dispatch(deleteTodoAction(id));
+    },
+    onToggleAllClick: () => {
+      dispatch(toggleAllAction());
     }
   };
 };
