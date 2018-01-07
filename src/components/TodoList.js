@@ -1,9 +1,9 @@
 import React from "react";
 import Todo from "./Todo";
 
-const TodoList = ({ todos, onTodoClick, onTodoRemove }) => (
+const TodoList = ({ todos, onTodoClick, onTodoRemove, onToggleAllClick }) => (
   <section className="main">
-    <input className="toggle-all" type="checkbox" />
+    <input className="toggle-all" type="checkbox" onChange={onToggleAllClick} />
     <ul className="todo-list">
       {todos.map(t => {
         return (

@@ -6,18 +6,19 @@ import { addTodoAction } from "../actionCreators";
 const AddTodo = ({ dispatch }) => {
   let input;
   return (
-    <header className="header">
-      <h1>TODOS</h1>
-      <form
-        onSubmit={evt => {
-          evt.preventDefault();
-          dispatch(addTodoAction(input.value));
-          input.value = "";
-        }}
-      >
-        <input className="new-todo" ref={node => (input = node)} />
-      </form>
-    </header>
+    <form
+      onSubmit={evt => {
+        evt.preventDefault();
+        dispatch(addTodoAction(input.value));
+        input.value = "";
+      }}
+    >
+      <input
+        className="new-todo"
+        ref={node => (input = node)}
+        placeholder="What needs to be done?"
+      />
+    </form>
   );
 };
 
