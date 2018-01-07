@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
-    activeCount: state.todos.filter(t => !t.completed).length
+    activeCount: state.todos.filter(t => !t.completed).length,
+    showClearButton: state.todos.filter(t => t.completed).length > 0
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -18,7 +19,8 @@ const Footer = ({
   visibilityFilter,
   onFilterClick,
   activeCount,
-  onClearCompletedClick
+  onClearCompletedClick,
+  showClearButton
 }) => (
   <footer className="footer">
     <span className="todo-count">
@@ -36,9 +38,11 @@ const Footer = ({
         <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
       </li>
     </ul>
-    <button className="clear-completed" onClick={onClearCompletedClick}>
-      Clear completed
-    </button>
+    {showClearButton && (
+      <button className="clear-completed" onClick={onClearCompletedClick}>
+        Clear completed
+      </button>
+    )}
   </footer>
 );
 
