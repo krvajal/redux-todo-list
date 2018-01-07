@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 let nextTodoId = 0;
 
-const AddTodo = ({}, { store }) => {
+const AddTodo = ({ dispatch }) => {
   let input;
   return (
     <header className="header">
@@ -11,7 +12,7 @@ const AddTodo = ({}, { store }) => {
       <form
         onSubmit={evt => {
           evt.preventDefault();
-          store.dispatch({
+          dispatch({
             type: "ADD_TODO",
             id: nextTodoId++,
             text: input.value
@@ -24,7 +25,5 @@ const AddTodo = ({}, { store }) => {
     </header>
   );
 };
-AddTodo.contextTypes = {
-  store: PropTypes.object
-};
-export default AddTodo;
+
+export default connect()(AddTodo);
