@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
-let nextTodoId = 0;
+import { addTodoAction } from "../actionCreators";
 
 const AddTodo = ({ dispatch }) => {
   let input;
@@ -12,11 +11,7 @@ const AddTodo = ({ dispatch }) => {
       <form
         onSubmit={evt => {
           evt.preventDefault();
-          dispatch({
-            type: "ADD_TODO",
-            id: nextTodoId++,
-            text: input.value
-          });
+          dispatch(addTodoAction(input.value));
           input.value = "";
         }}
       >
