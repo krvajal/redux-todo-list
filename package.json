@@ -7,6 +7,8 @@
     "deep-freeze": "^0.0.1",
     "expect": "^22.0.3",
     "gh-pages": "^1.1.0",
+    "loadash": "^1.0.0",
+    "node-uuid": "^1.4.8",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
