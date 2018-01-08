@@ -1,3 +1,9 @@
+# Redux-Todo-List
+This project follows the redux tutorial by Dan Abramov available in egghead. I used the TodoMVC stylesheet and markup to make the view layer look nicer. Besides that it follows the tutorial up to the point a server is added and this version just use the local storage to persist the data.
+
+You can see a live version of the app [here](krvajal.github.io/redux-todo-list/).
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
