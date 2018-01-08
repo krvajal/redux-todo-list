@@ -5,6 +5,10 @@ import todoApp from "./reducers/index";
 
 const addLoggintToDispatch = store => {
   const rawDispatch = store.dispatch;
+  if (!console.group) {
+    // not available in some browsers
+    return rawDispatch;
+  }
   return action => {
     console.group(action.type);
     console.log("%c prev state", "color: gray", store.getState());
@@ -16,14 +20,27 @@ const addLoggintToDispatch = store => {
   };
 };
 
+const addPromiseSupportToDispatch = store => {
+  const rawDispatch = store.dispatch;
+  return action => {
+    // chek if the action is a promise though
+    if (typeof action.then === "function") {
+      // the action should return an action object
+      return action.then(rawDispatch);
+    }
+    return rawDispatch;
+  };
+};
 const configureStore = () => {
   const persistedState = loadState();
   const store = createStore(
     todoApp,
     persistedState //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
-
-  store.dispatch = addLoggintToDispatch(store);
+  if (process.env.NODE_ENV !== "production") {
+    store.dispatch = addLoggintToDispatch(store);
+  }
+  store.dispatch = addPromiseSupportToDispatch(store);
   store.subscribe(
     throttle(() => {
       saveState({
