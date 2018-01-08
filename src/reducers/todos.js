@@ -11,8 +11,7 @@ const byId = (state = {}, action) => {
     case "EDIT_TODO":
       return { ...state, [action.id]: todo(state[action.id], action) };
     case "REMOVE_TODO":
-      return { ...state, [action.id]: undefined };
-
+      return removeTodo(state, action.id);
     case "TOGGLE_ALL":
       return toggleAll(state);
     default:
@@ -20,7 +19,15 @@ const byId = (state = {}, action) => {
   }
 };
 
-const toggleAll = (state, action) => {
+const removeTodo = (state, toDeleteId) => {
+  return Object.keys(state).reduce((updatedTodos, id) => {
+    if (id != toDeleteId) updatedTodos[id] = state[id];
+    return updatedTodos;
+  }, {});
+};
+
+const toggleAll = state => {
+  console.log(state);
   return Object.keys(state).reduce((updatedTodos, id) => {
     updatedTodos[id] = {
       ...state[id],
