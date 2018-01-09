@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add todo renders 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <input
+    className="new-todo"
+    placeholder="What needs to be done?"
+  />
+</form>
+`;

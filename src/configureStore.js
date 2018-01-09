@@ -52,7 +52,7 @@ const configureStore = () => {
     persistedState, //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(...middlewares)
   );
-
+  
   store.subscribe(
     throttle(() => {
       saveState({
