@@ -20,6 +20,9 @@
     "redux": "^3.7.2"
   },
   "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "react-addons-test-utils": "^15.6.2",
     "react-scripts": "1.0.17",
     "react-test-render": "^1.1.1"
   },
@@ -29,6 +32,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "coverage": "react-scripts test --env=jsdom --coverage"
   }
 }

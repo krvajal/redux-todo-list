@@ -1,40 +1,43 @@
 import deepFreeze from "deep-freeze";
 import expect from "expect";
 
-import { todos, todo, visibilityFilter } from "./reducers";
+import todos from "../todos";
 
-function testToggleTodo() {
-  const stateBefore = [
-    {
-      id: 0,
+test("toggle todo", () => {
+  const stateBefore = {
+    "0": {
+      id: "0",
       text: "Learn Redux",
       completed: false
     },
-    {
-      id: 1,
+    "1": {
+      id: "1",
       text: "Go Shopping!",
       completed: false
     }
-  ];
+  };
 
   const action = {
     type: "TOGGLE_TODO",
-    id: 1
+    id: "1"
   };
-  const stateAfter = [
-    {
-      id: 0,
+  const stateAfter = {
+    "0": {
+      id: "0",
       text: "Learn Redux",
       completed: false
     },
-    {
-      id: 1,
+    "1": {
+      id: "1",
       text: "Go Shopping!",
       completed: true
     }
-  ];
-  expect(todos(stateBefore, action)).toEqual(stateAfter);
-}
+  };
+  expect(todos({ byId: stateBefore, allIds: ["0", "1"] }, action)).toEqual({
+    byId: stateAfter,
+    allIds: ["0", "1"]
+  });
+});
 
 const testAddTodo = () => {
   const stateBefore = [];
